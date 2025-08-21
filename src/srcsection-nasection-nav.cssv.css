@@ -1,0 +1,95 @@
+/* Sticky sidebar + mobile chips catching only h2. Basically JS will set header-offset dynamically.
+*/
+
+.section-nav {
+  position: sticky;
+  top: calc(var(--header-offset, 0px) + 16px);
+  max-height: calc(100vh - var(--header-offset, 0px) - 32px);
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  background: #fff;
+}
+
+.section-nav__title {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.section-nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.section-nav__item + .section-nav__item {
+  margin-top: 8px;
+}
+
+.section-nav__link {
+  text-decoration: none;
+  display: block;
+  padding: 6px 8px;
+  border-radius: 8px;
+  color: #111827;
+}
+
+.section-nav__link:hover {
+  background: #f3f4f6;
+}
+
+.section-nav__link.is-active {
+  background: #e5efe6; 
+  font-weight: 600;
+}
+
+/* chips for mobile */
+.section-nav-mobile {
+  position: sticky;
+  top: calc(var(--header-offset, 0px));
+  z-index: 2;
+  background: #fff;
+  padding: 8px 12px;
+  border-bottom: 1px solid #f3f4f6;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.section-nav-mobile__row {
+  display: flex;
+  gap: 8px;
+  min-width: max-content;
+}
+
+.section-chip {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 9999px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  text-decoration: none;
+  color: #111827;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.section-chip.is-active {
+  background: #111827;
+  color: #fff;
+  border-color: #111827;
+}
+
+/* just a simple responsive hint that hides sidebar on small screens and show chips */
+@media (max-width: 991px) {
+  .section-nav { display: none; }
+  .section-nav-mobile { display: block; }
+}
+
+@media (min-width: 992px) {
+  .section-nav { display: block; }
+  .section-nav-mobile { display: none; }
+}
